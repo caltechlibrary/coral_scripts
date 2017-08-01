@@ -2,6 +2,11 @@
 
 ### This script is mainly for applying patches to CORAL.
 
+## Make sure scripts are up to date.
+# Change to the directory of this script and run update script.
+cd "$( dirname "$0" )" || exit
+./update_scripts.sh
+
 ## Extrapolate the directories in this project.
 project_root="$( cd "$( dirname "$0" )" && cd .. && pwd )"
 web_root="${project_root}/web"

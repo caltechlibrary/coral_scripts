@@ -1,5 +1,12 @@
 #!/bin/bash
 
+### This import will typically be run from the test instance of CORAL.
+
+## Make sure scripts are up to date.
+# Change to the directory of this script and run update script.
+cd "$( dirname "$0" )" || exit
+./update_scripts.sh
+
 # We only want to allow importing into test databases so the ~/.my.cnf file uses
 # localhost and not RDS for the location of the MySQL instance.
 
