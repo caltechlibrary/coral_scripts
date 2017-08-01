@@ -21,6 +21,7 @@ git stash
 # @TODO Define branch as a command argument.
 git pull
 # Get a list of `*.patch` files from the `patches` directory.
+# @TODO Apply patches based on `master` or `development` branch.
 find "$patches_dir" -type f -name "*.patch" | while read -r patch; do
     # Copy the current patch file to web root.
     cp "$patch" .
