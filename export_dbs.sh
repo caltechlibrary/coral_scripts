@@ -13,13 +13,15 @@ if [ ! -f "$HOME"/.my.cnf ]; then
     # @TODO Prompt for credentials if ~/.my.cnf file does not exist.
 fi
 
-# We check the directory of this script and extrapolate the others.
-base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
-db_dir="$base_dir"/db
-web_dir="$base_dir"/web
+## Extrapolate the directories in this project.
+project_root="$( cd "$( dirname "$0" )" && cd .. && pwd )"
+db_dir="$project_root"/db
+web_root="$project_root"/web
+
 timestamp=$(date +%s)
 
-# Read the configuration information from the auth module line by line.
+# Read the configuration information from the auth module line by line. (File
+# declared after `while` loop.)
 within_database='false'
 while read -r line; do
 
@@ -48,7 +50,7 @@ while read -r line; do
         # fi
     fi
 
-done < "${web_dir}/auth/admin/configuration.ini"
+done < "${web_root}/auth/admin/configuration.ini"
 
 # Can we run mkdir only when mysqldump is successful?
 mkdir "${db_dir}"/"${timestamp}"

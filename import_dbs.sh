@@ -10,9 +10,10 @@ if [ ! -f "$HOME"/.my.cnf ]; then
     # @TODO Prompt for credentials if ~/.my.cnf file does not exist.
 fi
 
-# We check the directory of this script and extrapolate the others.
-base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
-db_dir="$base_dir"/db
+## Extrapolate the directories in this project.
+project_root="$( cd "$( dirname "$0" )" && cd .. && pwd )"
+db_dir="$project_root"/db
+
 latest=$( readlink -f "$db_dir"/latest )
 
 dbs="auth \
