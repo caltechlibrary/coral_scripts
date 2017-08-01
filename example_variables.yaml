@@ -1,0 +1,13 @@
+### Example variables.
+
+## Copy this file to `variables.yaml` in order to use the values you set. It is
+## set to be ignored by Git.
+
+# The host can be either a domain or an IP address that will be used for running
+# `rsync` to download database exports.
+host: coral.example.edu
+
+# Optional. The ssh_user to use with `rsync` to connect to the host. The `$USER`
+# variable is used by default. If your SSH user is different, uncomment and set
+# this variable.
+ssh_user: exampleuser
