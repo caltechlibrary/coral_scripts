@@ -9,7 +9,7 @@ cd "$(dirname "$0")" || exit
 remote=$( git remote | head -n 1 );
 
 # Get the current branch name (indicated with `*`).
-branch=$( git branch | grep \* | cut -d " " -f 2 )
+branch=$( git branch | grep "*" | cut -d " " -f 2 )
 
 # Check if there is a remote.
 if [ ! -z "$remote" ]; then

@@ -8,9 +8,10 @@ cd "$( dirname "$0" )" || exit
 ./update_scripts.sh
 
 ## Extrapolate the directories in this project.
-project_root="$( cd "$( dirname "$0" )" && cd .. && pwd )"
-web_root="${project_root}/web"
-patches_dir="${project_root}/patches"
+# Current directory is the `scripts` directory, from update section above.
+project_root=$( cd .. && pwd )
+web_root="$project_root"/web
+patches_dir="$project_root"/patches
 
 ## Stash all local changes, pull any remote changes, and then apply patches.
 # Change directory to the web root.

@@ -10,7 +10,8 @@ cd "$( dirname "$0" )" || exit
 ./update_scripts.sh
 
 ## Extrapolate the directories in this project.
-project_root="$( cd .. && pwd )"
+# Current directory is the `scripts` directory, from update section above.
+project_root=$( cd .. && pwd )
 db_dir="$project_root"/db
 scripts_dir="$project_root"/scripts
 

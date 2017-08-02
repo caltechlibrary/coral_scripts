@@ -12,13 +12,14 @@ cd "$( dirname "$0" )" || exit
 
 # Check for the non-existence of a ~/.my.cnf file to use for MySQL credentials.
 if [ ! -f "$HOME"/.my.cnf ]; then
-    printf "Credentials must exist in ~/.my.cnf for a user to drop and create databases in MySQL.\nExiting."
+    printf "Credentials must exist in ~/.my.cnf for a user to drop and create databases in MySQL.\\nExiting."
     exit 1
     # @TODO Prompt for credentials if ~/.my.cnf file does not exist.
 fi
 
 ## Extrapolate the directories in this project.
-project_root="$( cd "$( dirname "$0" )" && cd .. && pwd )"
+# Current directory is the `scripts` directory, from update section above.
+project_root=$( cd .. && pwd )
 db_dir="$project_root"/db
 
 latest=$( readlink -f "$db_dir"/latest )

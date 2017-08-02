@@ -13,13 +13,14 @@ cd "$( dirname "$0" )" || exit
 # need to set up the variables from configuration.ini before this check to
 # determine which databases we are exporting.
 if [ ! -f "$HOME"/.my.cnf ]; then
-    printf "Credentials must exist in ~/.my.cnf for a user to dump databases in MySQL.\nExiting."
+    printf "Credentials must exist in ~/.my.cnf for a user to dump databases in MySQL.\\nExiting."
     exit 1
     # @TODO Prompt for credentials if ~/.my.cnf file does not exist.
 fi
 
 ## Extrapolate the directories in this project.
-project_root="$( cd "$( dirname "$0" )" && cd .. && pwd )"
+# Current directory is the `scripts` directory, from update section above.
+project_root=$( cd .. && pwd )
 db_dir="$project_root"/db
 web_root="$project_root"/web
 
@@ -31,7 +32,7 @@ within_database='false'
 while read -r line; do
 
     # Adjust for CRLF line endings.
-    line=$( echo "$line" | tr -d "\r" )
+    line=$( echo "$line" | tr -d "\\r" )
     # Identify the beginning of a section.
     bracket="${line:0:1}"
     if [ "${bracket}" = '[' ]; then
@@ -44,9 +45,9 @@ while read -r line; do
     fi
 
     if [ "$within_database" = 'true' ]; then
-        is_name=$(echo "$line" | grep "^\s*name")
+        is_name=$(echo "$line" | grep "^name")
         if [ "$is_name" != "" ]; then
-            db_name=$(echo "$is_name" | cut -d\"  -f 2)
+            db_name=$( echo "$is_name" | cut -d\"  -f 2 )
         fi
         # # Host is set with the ~/.my.cnf file currently.
         # is_host=$(echo "$line" | grep "host")
@@ -55,7 +56,7 @@ while read -r line; do
         # fi
     fi
 
-done < "${web_root}/auth/admin/configuration.ini"
+done < "$web_root"/auth/admin/configuration.ini
 
 # Can we run mkdir only when mysqldump is successful?
 mkdir "${db_dir}"/"${timestamp}"
@@ -74,9 +75,9 @@ dbs="auth \
 
 for db in $dbs; do
 
-  mysqldump "${db_prefix}"_"${db}" | gzip > "${db_dir}"/"${timestamp}"/"${db_prefix}"_"${db}".sql.gz
+  mysqldump "$db_prefix"_"$db" | gzip > "$db_dir"/"$timestamp"/"$db_prefix"_"$db".sql.gz
 
-  echo "created" "${db_dir}"/"${timestamp}"/"${db_prefix}"_"${db}".sql.gz
+  echo "created" "$db_dir"/"$timestamp"/"$db_prefix"_"$db".sql.gz
 
 done
 
