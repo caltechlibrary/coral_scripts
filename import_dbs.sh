@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### This import will typically be run from the test instance of CORAL.
+### This import will typically be run from a test instance of CORAL.
 
 ## Make sure scripts are up to date.
 # Change to the directory of this script and run update script.

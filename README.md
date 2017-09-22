@@ -9,8 +9,7 @@ To make backups of all seven CORAL databases do the following:
 
 To copy the backed-up databases to a local VM do the following:
 
-- use rsync
-- rsync -avz {remote_source} {local_destination}
+- run the download script at `{project_root}/scripts/download_dbs.sh`
 
 To restore backed-up databases to local CORAL VM installation do the following:
 

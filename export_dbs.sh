@@ -2,6 +2,8 @@
 
 ### This export will typically be run from the production instance of CORAL.
 
+# @TODO Check that script is run as root.
+
 ## Make sure scripts are up to date.
 # Change to the directory of this script and run update script.
 cd "$( dirname "$0" )" || exit
