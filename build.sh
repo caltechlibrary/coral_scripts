@@ -12,6 +12,12 @@ cd "$( dirname "$0" )" || exit
 project_root=$( cd .. && pwd )
 web_root="$project_root"/web
 patches_dir="$project_root"/patches
+scripts_dir="$project_root"/scripts
+
+## Update patches directory from remote repository.
+# Change to the `patches` directory and run update script.
+cd "$patches_dir" || exit
+"$scripts_dir"/update_current_repo.sh
 
 ## Stash all local changes, pull any remote changes, and then apply patches.
 # Change directory to the web root.
