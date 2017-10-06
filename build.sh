@@ -5,7 +5,7 @@
 ## Make sure scripts are up to date.
 # Change to the directory of this script and run update script.
 cd "$( dirname "$0" )" || exit
-./update_scripts.sh
+./update_current_repo.sh
 
 ## Extrapolate the directories in this project.
 # Current directory is the `scripts` directory, from update section above.
@@ -18,7 +18,7 @@ patches_dir="$project_root"/patches
 cd "$web_root" || exit
 # todo: Make branch name a command argument.
 # todo: Checkout can be performed by this script even if there are conflicts.
-# Get the current branch name (indicated with `*`).
+# Get the current branch name (indicated with a `*` character).
 branch=$( git branch | grep "*" | cut -d " " -f 2 )
 # Stash any local changes instead of deleting them.
 git stash

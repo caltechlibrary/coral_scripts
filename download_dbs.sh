@@ -7,7 +7,7 @@
 ## Make sure scripts are up to date.
 # Change to the directory of this script and run update script.
 cd "$( dirname "$0" )" || exit
-./update_scripts.sh
+./update_current_repo.sh
 
 ## Extrapolate the directories in this project.
 # Current directory is the `scripts` directory, from update section above.

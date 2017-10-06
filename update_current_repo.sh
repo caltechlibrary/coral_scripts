@@ -1,14 +1,11 @@
 #!/bin/bash
 
-## Update scripts.
-
-# Change to the directory of this script.
-cd "$(dirname "$0")" || exit
+## Update the current remote repository. This script is called from elsewhere.
 
 # Get the first remote in the list.
 remote=$( git remote | head -n 1 );
 
-# Get the current branch name (indicated with `*`).
+# Get the current branch name (indicated with a `*` character).
 branch=$( git branch | grep "*" | cut -d " " -f 2 )
 
 # Check if there is a remote.

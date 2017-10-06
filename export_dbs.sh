@@ -7,7 +7,7 @@
 ## Make sure scripts are up to date.
 # Change to the directory of this script and run update script.
 cd "$( dirname "$0" )" || exit
-./update_scripts.sh
+./update_current_repo.sh
 
 # Check for the non-existence of a ~/.my.cnf file to use for MySQL credentials.
 # @TODO Set up alternate file for use with --defaults-extra-file option in case
